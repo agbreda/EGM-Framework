@@ -338,9 +338,9 @@ class EGMframework(object):
             stage = self.stages[self.current]
         
         if hasattr(self, 'Dt_inputs'):
-            boundary_depths_update(levels=self.levels[stage], elevs=self.z, Dt_HT=self.Dt_inputs)
+            boundary_depths_update(levels=self.levels[stage].dropna(), elevs=self.z, Dt_HT=self.Dt_inputs)
         else:
-            boundary_depths_update(levels=self.levels[stage], elevs=self.z)
+            boundary_depths_update(levels=self.levels[stage].dropna(), elevs=self.z)
         
         #Reviewing final time and output's time step
         n = len(self.levels[stage].dropna()) - 1    #input level series starts at t=0
