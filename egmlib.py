@@ -823,7 +823,7 @@ class EGMproject(object):
         
         # creating a normalization, so that the elevations below 'msl' will look like water while above it
         #will look like land
-        divnorm = mcolors.DivergingNorm(vmin=np.min(self.z)-0.01, vcenter=msl, vmax=np.max(self.z)+0.01)
+        divnorm = mcolors.TwoSlopeNorm(vcenter=msl, vmin=np.min(self.z)-0.01, vmax=np.max(self.z)+0.01)        
         
         # create the coordinates matrices of cells' corners coordinates
         xFace = np.hstack( ([self.x[0,0]-0.5*self.dx[0,0]], self.x[0,:]+0.5*self.dx[0,:]) )
